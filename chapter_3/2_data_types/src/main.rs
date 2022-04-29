@@ -10,18 +10,14 @@ fn main() {
     // 128-bit | i128 [-2^(128-1), 2^(128-1)-1]          | u128 [0, 2^128-1]                      |
     // arch    | isize architecture type (32 or 64 bits) | usize architecture type (32 or 64 bits)|
 
-    // Example of unsignet variable 32 bits.
+    // Example of unsigned variable 32 bits.
     let guess: u32 = "42".parse().expect("Not a number!");
     println!("The value of guess: {}", guess);
 
     // variables can overflow. Example an unsigned integer 8 bits can hold maximum of 255.
     // If compiled in debug mode a `panic` occur. If compiled in release mode an overflow occur.
+    // Actually, when I compiled with flag --release it did not allowed the overflow with a value
+    // bigger than 255.
     let overflow: u8 = 255;
     println!("Value of overflow: {}", overflow);
-
-    println!("result of `my_sum` function: {}", my_sum(3, 5));
-}
-
-fn my_sum(a: u8, b: u8) -> u8 {
-    a + b
 }
