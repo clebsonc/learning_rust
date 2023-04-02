@@ -33,13 +33,15 @@ fn main() {
 
 fn understanding_strings(text: &String) {
     println!("Sentence: `{}`", text);
-    let bytes = text.as_bytes();
+    let bytes: &[u8] = text.as_bytes();  // the return value of function `as_bytes` is a reference
+                                         // to a vector of unsigned integers of 8 bytes
     println!("Sentence as bytes: {:?}", bytes);
 
     // Getting the first character
     let character = from_utf8(&bytes[0..1]).unwrap();
     println!("Byte 0 as char: {:?}", character);
     println!("Letter `S` as bytes: {}", b'S');
+    println!("Letter `S` from the array at index 0: {}", bytes[0]);
 }
 
 fn first_word(text: &String) -> usize {
