@@ -18,21 +18,21 @@ enum IpAddrKindWithType {
     V6(String)
 }
 
-// Enums can have variants with differnt types: strings, numeric types, structs.
+// Enums can have variants with different types: strings, numeric types, structs, etc.
 #[allow(dead_code)]
 #[derive(Debug)]
 enum Message {
-    Quite,
-    Move { x: i32, y:i32 },
-    Write(String),
-    ChangeColor(i32, i32, i32),
+    Quit,                           // no data associated with this variant
+    Move { x: i32, y:i32 },         // an struct is associated with Move, basically named fields.
+    Write(String),                  // containing a single String.
+    ChangeColor(i32, i32, i32),     // Tuple of thre signed integers of 32 bits.
 }
+
 // Just like structures, enums can have methods and functions in its  `impl`
 // section.
 impl Message {
-    fn call(&self) -> u8 {
-        println!("Call method used.");
-        10
+    fn call(&self) {
+        println!("Call method used for variant {:#?}", &self);
     }
 }
 
@@ -48,6 +48,12 @@ fn main() {
     println!("Address type: {:#?}", ip_3);
     println!("Address type: {:#?}", ip_4);
 
-    let message: Message = Message::Write(String::from("Hello world."));
-    println!("Message struct: {:#?}", message.call());
+    let message1: Message = Message::Write(String::from("Hello world."));
+    let message2: Message = Message::Quit;
+    let message3: Message = Message::Move {x: 10, y: 23};
+    let message4: Message = Message::ChangeColor(100, 200, 300);
+    println!("Message struct: {:#?} \n", message1.call());
+    println!("Message struct: {:#?} \n", message2.call());
+    println!("Message struct: {:#?} \n", message3.call());
+    println!("Message struct: {:#?} \n", message4.call());
 }

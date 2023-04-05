@@ -60,8 +60,13 @@ fn testing_match_that_binds_patterns_to_value() {
     value_in_cents_with_quarter_having_state(coin);
 }
 
+
+
+
+// When we use Option in match expression is necessary we cover both the None and Some clause.
+// The `match` clause is exaustive, if we do not cover all possibilites the compiler will know
+// that there are things missing.
 fn plus_one(x: Option<i32>) -> Option<i32> {
-    // When we use Option in match expression is necessary we cover both the None and Some clause.
     match x {
         None => None,
         Some(i) => Some(i + 1),
@@ -69,11 +74,16 @@ fn plus_one(x: Option<i32>) -> Option<i32> {
 }
 
 
+// when using a match, is possible to add a default action for values that we do not need specific
+// actions. This is done with the `other` clause.
 fn roll_the_dice(dice_number: u8) -> String {
     match dice_number {
         3 => String::from("Add fancy hat!"),
         7 => String::from("Remove fancy hat!"),
-        other => {
+        other => {  // this pattern is added for last, because clauses in `match` are evaluated by
+                    // order. If we don`t  want to take action for the default value it is
+                    // possible to use the symbol `_`. This symbol `_` basically tells the compiler that we
+                    // don`t care with the default value, and we should not handle it.
             let number_string = other.to_string();
             let sentence = String::from("Times to move: ");
             format!("{}{}", sentence, number_string)

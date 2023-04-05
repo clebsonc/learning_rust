@@ -27,7 +27,7 @@ impl Rectangle {
     // if we create a method without the self parameter it will be treated like
     // a regular function. We must access it using the namespace syntax: `::`
     fn square(size: f64) -> Rectangle {
-        Rectangle {
+        Self {  // here `Self` is an alias for `Rectangle`, we can use both syntax.
             width: size,
             height: size,
         }
@@ -53,6 +53,7 @@ fn main() {
     println!("Rectangle 1 can hold rectangle 2: {}", rect1.can_hold(&rect2));
     println!("Rectangle 1 can hold rectangle 3: {}", rect1.can_hold(&rect3));
 
-    let square = Rectangle::square(3.0);
+    let square = Rectangle::square(3.0);  // The :: means that we are accessing the function square
+                                          // in the namespace Rectangle.
     println!("Square: {:#?}", square);
 }
