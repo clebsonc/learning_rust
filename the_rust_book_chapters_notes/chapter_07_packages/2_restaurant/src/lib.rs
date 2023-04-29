@@ -89,7 +89,7 @@ mod back_of_house {
         pub toast: String,   // public string `toast`
 
         #[allow(dead_code)]
-        seasonal_fruit: String,  // public string `seasonal_fruit`
+        seasonal_fruit: String,  // private string `seasonal_fruit`
     }
 
     impl Breakfast {
