@@ -50,7 +50,7 @@ mod characters {
             elves.push(elf);
         }
         ElfGroup {
-            elves: elves
+           elves
         }
     }
 }
