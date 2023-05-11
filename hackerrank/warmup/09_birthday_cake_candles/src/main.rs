@@ -1,3 +1,5 @@
+//https://www.hackerrank.com/challenges/birthday-cake-candles/problem?isFullScreen=true
+
 use std::io;
 
 fn read_input() -> Vec<i32> {
