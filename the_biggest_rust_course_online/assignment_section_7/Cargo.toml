@@ -1,0 +1,17 @@
+[package]
+name = "assignment_section_7"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+
+
+[lib]
+name = "simple_calculator"
+path = "src/lib.rs"
+
+[[bin]]
+name = "calculator"
+path = "src/main.rs"
