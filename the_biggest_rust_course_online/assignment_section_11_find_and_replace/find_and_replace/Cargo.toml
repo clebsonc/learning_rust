@@ -15,5 +15,5 @@ text-colorizer = "1.0.0"
 
 
 [[bin]]
-name = "fr"
+name = "fd"
 path = "src/main.rs"
