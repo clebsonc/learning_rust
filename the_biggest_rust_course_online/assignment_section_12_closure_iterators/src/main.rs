@@ -1,3 +1,6 @@
+mod counter;
+
+
 fn with_closure(values: &[i32]) {
     let iter = values.iter();
     let result: Vec<i32> = iter.map(|x| x * 10).collect();
@@ -40,5 +43,14 @@ fn main() {
     // creating a closure. Closures are just like Lambda functions in python.
     let closure_example = |x: i32| x.pow(2);
     println!("{:?}", closure_example(10));
+
+    println!("-------------");
+    let my_counter = counter::Range::new(1, 2);
+    for i in my_counter.into_iter() {
+        println!("index: {}", i);
+    }
+
+    // let my_counter = counter::Range::default();
+    // println!("{:?}", my_counter);
 
 }
