@@ -45,15 +45,20 @@ impl Restaurant {
 
 fn main() {
     let rest1 = Restaurant {
-        reservations: 12,
-        has_mice_infestations: true,
+        reservations: 11,
+        has_mice_infestations: false,
     };
     let dish = {
         match rest1.chef_special() {
-            None => String::from("Empty"),
+            None => String::from("None"),
             Some(a) => a.name,
         }
     };
-
-    println!("dish: {:?}, dish: {}", rest1, dish);
+    println!("dish: {:?}", dish);
+    let res = rest1.deliver_burger("123 Elm Street");
+    if let Ok(var) = res {
+        println!("Ready do deliver food: {:?}", var.name);
+    } else {
+        println!("Error for delivering. {:?}", res);
+    }
 }
